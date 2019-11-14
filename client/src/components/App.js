@@ -1,17 +1,19 @@
 import React from "react"
-import { useUsers } from "../hooks"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Home from './Home'
+import Going from './Going'
+import NotGoing from './NotGoing'
 
-function App() {
-  const { users } = useUsers()
-
-  console.log(users)
+function App(props) {
 
   return (
-    <div>
-      {users.map(user => (
-        <p key={user.id}>{user.name}</p>
-      ))}
-    </div>
+    <Router>
+      <div>
+        <Route exact path='/' component={Home} />
+        <Route path='/Going' component={Going} />
+        <Route path='/NotGoing' component={NotGoing} />
+      </div>
+    </Router>
   )
 }
 

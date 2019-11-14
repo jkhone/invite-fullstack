@@ -1,12 +1,32 @@
 const router = require("express").Router()
 
-const users = [
-  { id: 1, name: "Mike" },
-  { id: 2, name: "Ryan" }
-]
+const going = []
+const notgoing = []
 
-router.get("/", (req, res, next) => {
-  res.json(users)
+router.post("/going", (req, res, next) => {
+  const id = going.length + 1
+  const user = req.body.user
+  user.id = id
+
+  going.push(user)
+  res.json(user)
+})
+
+router.post("/notgoing", (req, res, next) => {
+  const id = notgoing.length + 1
+  const user = req.body.user
+  user.id = id
+
+  notgoing.push(user)
+  res.json(user)
+})
+
+router.get("/going", (req, res, next) => {
+  res.json(going)
+})
+
+router.get("/notgoing", (req, res, next) => {
+  res.json(notgoing)
 })
 
 module.exports = router
