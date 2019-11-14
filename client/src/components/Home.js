@@ -2,6 +2,7 @@ import React from "react"
 import { useUser } from "../hooks"
 import Icon from '../lib/Icon'
 import { Link } from 'react-router-dom'
+import '../styles/styles.css'
 
 function Home(props) {
   const { user, isGoing, isNotGoing, notGoing, going } = useUser()
@@ -15,19 +16,28 @@ function Home(props) {
   }
 
   return (
-    <div>
-        <div>
-            <Link to={'/NotGoing'}>{notGoing.length} Not Going</Link>
-            <br/>
-            <Link to={'/Going'}>{going.length} Going</Link>
+    <div className='home'>
+        <div className='links'>
+            <Link to={'/NotGoing'}>Not Going: {notGoing.length}</Link>
+            <Link to={'/Going'}>Going: {going.length}</Link>
         </div>
-        <img src={user.picture} alt='' />
-        <p>Name: {user.fname} {user.lname}</p>
-        <p>Phone: {user.phone}</p>
-        <p>Email: {user.email}</p>
-        <div>
-          <button onClick={(e) => handleNotGoing(user)}><Icon icon='times'/></button>
-          <button onClick={(e) => handleGoing(user)}><Icon icon='check'/></button>
+        <div className='info'>
+            <div className='picture'>
+                <img src={user.picture} alt='' />
+            </div>
+            <div className='para'>
+                <p>Name: {user.fname} {user.lname}</p>
+                <p>Phone: {user.phone}</p>
+                <p>Email: {user.email}</p>
+            </div>
+            <div className='buttons'>
+            <button 
+            className='not'
+            onClick={(e) => handleNotGoing(user)}><Icon icon='times'/></button>
+            <button 
+            className='going'
+            onClick={(e) => handleGoing(user)}><Icon icon='check'/></button>
+            </div>
         </div>
     </div>
   )

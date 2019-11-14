@@ -8,7 +8,7 @@ function App(props) {
 
   return (
     <Router>
-      <div>
+      <div className='app'>
         <Route exact path='/' component={Home} />
         <Route path='/Going' component={Going} />
         <Route path='/NotGoing' component={NotGoing} />
